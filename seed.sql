@@ -11,14 +11,31 @@ DELETE FROM employee;
 
 SELECT * FROM employee;
 
-ALTER TABLE employee AUTO_INCREMENT = 1;
-
 SELECT *
 FROM employee mi1, employee mi2
 WHERE mi1.id = mi2.manager_id;
 
-UPDATE employee 
-SET id = 2
-WHERE first_name = 'Mel';
+INSERT INTO employeeRole (title, salary, department_id)
+VALUES
+('Manager', 65000, 10),
+('Manager', 65500, 12),
+('Full Stack Web Developer', 53000, 10),
+('Front End Web Developer', 50000, 12);
 
+SELECT employee.role_id, employeeRole.department_id
+FROM employee
+LEFT JOIN employeeRole
+ON employee.role_id = employeeRole.department_id;
 
+SELECT * FROM employee;
+
+SELECT employeeRole.department_id, department.department_id
+FROM employeeRole
+LEFT JOIN department
+ON employeeRole.department_id = department.department_id;
+
+SELECT * FROM employee;
+
+SELECT * FROM employeeRole;
+
+SELECT * FROM department;
